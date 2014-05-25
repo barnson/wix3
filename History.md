@@ -1,3 +1,5 @@
+* BobArnson: WIXFEAT:3020 - Add MajorUpgrade/@SkipDowngrades attribute to exit early on attempted downgrades.
+
 * BobArnson: WIXFEAT:2742 - Add ProcessorArchitecture Burn variable.
 
 * BobArnson: WIXFEAT:4378 - Add WixBundleOriginalSourceFolder variable (WixBundleOriginalSource minus file name).

@@ -95,7 +95,7 @@
         <CustomAction Id="WixExitEarlyWithSuccess" BinaryKey="WixCA" DllEntry="WixExitEarlyWithSuccess" Execute="immediate" Return="check" SuppressModularization="yes" />
 
         <InstallExecuteSequence>
-            <Custom Action="WixExitEarlyWithSuccess" After="FindRelatedProducts" Overridable="yes">NEWERVERSIONDETECTED AND VersionNT &gt; 400</Custom>
+            <Custom Action="WixExitEarlyWithSuccess" After="FindRelatedProducts" Overridable="yes">(WIX_DOWNGRADE_DETECTED OR NEWERVERSIONDETECTED) AND VersionNT &gt; 400</Custom>
         </InstallExecuteSequence>
     </Fragment>
 

@@ -12547,6 +12547,22 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
+      <xs:attribute name="SkipDowngrades" type="YesNoTypeUnion">
+        <xs:annotation>
+          <xs:documentation>
+                    When set to yes, attempting to install a product with a lower version number
+                    when a product with a higher version is installed succeeds but the downgrade
+                    doesn't actually take place. AllowDowngrades="yes" is implied. The 
+                    DowngradeErrorMessage and AllowSameVersionUpgrades attributes must not be 
+                    specified. You must add WixUtilExtension to your project; the downgrade is skipped using the 
+                    <html:a href="~/customactions/wixexitearlywithsuccess.html">WixExitEarlyWithSuccess</html:a> 
+                    custom action.
+
+                    When set to no (the default), the behavior of an attempted downgrade is determined
+                    by the AllowDowngrades attribute.
+                </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="ProductSearch">

@@ -7788,6 +7788,7 @@ namespace Microsoft.Tools.WindowsInstallerXml
             bool allowDowngrades = false;
             bool allowSameVersionUpgrades = false;
             bool blockUpgrades = false;
+            bool skipDowngrades = false;
             string downgradeErrorMessage = null;
             string disallowUpgradeErrorMessage = null;
             string removeFeatures = null;
@@ -7844,6 +7845,9 @@ namespace Microsoft.Tools.WindowsInstallerXml
                         case "Schedule":
                             schedule = this.core.GetAttributeValue(sourceLineNumbers, attrib, false);
                             break;
+                        case "SkipDowngrades":
+                            skipDowngrades = YesNoType.Yes == this.core.GetAttributeYesNoValue(sourceLineNumbers, attrib);
+                            break;
                         default:
                             this.core.UnexpectedAttribute(sourceLineNumbers, attrib);
                             break;
@@ -7871,19 +7875,36 @@ namespace Microsoft.Tools.WindowsInstallerXml
                 }
             }
 
-            if (!allowDowngrades && String.IsNullOrEmpty(downgradeErrorMessage))
+            if (skipDowngrades)
             {
-                this.core.OnMessage(WixErrors.ExpectedAttribute(sourceLineNumbers, node.Name, "DowngradeErrorMessage", "AllowDowngrades", "yes", true));
-            }
+                allowDowngrades = true;
 
-            if (allowDowngrades && !String.IsNullOrEmpty(downgradeErrorMessage))
-            {
-                this.core.OnMessage(WixErrors.IllegalAttributeWithOtherAttribute(sourceLineNumbers, node.Name, "DowngradeErrorMessage", "AllowDowngrades", "yes"));
+                if (!String.IsNullOrEmpty(downgradeErrorMessage))
+                {
+                    this.core.OnMessage(WixErrors.IllegalAttributeWithOtherAttribute(sourceLineNumbers, node.Name, "DowngradeErrorMessage", "SkipDowngrades", "yes"));
+                }
+                
+                if (allowSameVersionUpgrades)
+                {
+                    this.core.OnMessage(WixErrors.IllegalAttributeWithOtherAttribute(sourceLineNumbers, node.Name, "AllowSameVersionUpgrades", "SkipDowngrades", "yes"));
+                }
             }
-
-            if (allowDowngrades && allowSameVersionUpgrades)
+            else
             {
-                this.core.OnMessage(WixErrors.IllegalAttributeWithOtherAttribute(sourceLineNumbers, node.Name, "AllowSameVersionUpgrades", "AllowDowngrades", "yes"));
+                if (!allowDowngrades && String.IsNullOrEmpty(downgradeErrorMessage))
+                {
+                    this.core.OnMessage(WixErrors.ExpectedAttribute(sourceLineNumbers, node.Name, "DowngradeErrorMessage", "AllowDowngrades", "yes", true));
+                }
+
+                if (allowDowngrades && !String.IsNullOrEmpty(downgradeErrorMessage))
+                {
+                    this.core.OnMessage(WixErrors.IllegalAttributeWithOtherAttribute(sourceLineNumbers, node.Name, "DowngradeErrorMessage", "AllowDowngrades", "yes"));
+                }
+
+                if (allowDowngrades && allowSameVersionUpgrades)
+                {
+                    this.core.OnMessage(WixErrors.IllegalAttributeWithOtherAttribute(sourceLineNumbers, node.Name, "AllowSameVersionUpgrades", "AllowDowngrades", "yes"));
+                }
             }
 
             if (blockUpgrades && String.IsNullOrEmpty(disallowUpgradeErrorMessage))
@@ -7975,6 +7996,11 @@ namespace Microsoft.Tools.WindowsInstallerXml
                         // row[4] = beforeAction;
                         row[5] = "InstallFinalize";
                         break;
+                }
+
+                if (skipDowngrades)
+                {
+                    this.core.CreateWixSimpleReferenceRow(sourceLineNumbers, "CustomAction", "WixExitEarlyWithSuccess");
                 }
             }
         }
@@ -10872,6 +10898,10 @@ namespace Microsoft.Tools.WindowsInstallerXml
             {
                 this.core.OnMessage(WixErrors.ExpectedAttribute(sourceLineNumbers, node.Name, "Id"));
                 id = String.Empty;
+            }
+            else if (27 < id.Length)
+            {
+                this.core.OnMessage(WixErrors.IdentifierTooLongError(sourceLineNumbers, node.Name, "Id", id, 27));
             }
 
             foreach (XmlNode child in node.ChildNodes)
