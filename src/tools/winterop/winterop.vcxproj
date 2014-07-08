@@ -34,6 +34,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\libs\dutil\dutil.vcxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ClCompile Include="winterop.cpp" />
   </ItemGroup>
   <ItemGroup>

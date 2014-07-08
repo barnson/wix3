@@ -9,10 +9,6 @@
 -->
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <ItemGroup>
-    <ProjectReference Include="..\libs\libs.proj">
-      <BuildInParallel>false</BuildInParallel>
-    </ProjectReference>
-
     <ProjectReference Include="winterop\winterop.vcxproj" />
     <ProjectReference Include="wix\wix.csproj" />
     <ProjectReference Include="candle\candle.csproj" />
