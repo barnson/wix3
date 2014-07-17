@@ -1,3 +1,5 @@
+* BobArnson: WIXBUG:4473 - Remove Wui.csproj from Wix.sln.
+
 * BobArnson: Use MediaTemplate in WiX setup. Include native SDK packages when the corresponding compiler is present, not just when the corresponding SDK is present. (The SDK is needed only to create the C++ custom action templates.)
 
 * SeanHall: WIXBUG:4467 - Create path2utl for path functions that require shlwapi.lib.
