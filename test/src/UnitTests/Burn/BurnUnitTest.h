@@ -50,7 +50,7 @@ namespace Bootstrapper
             RegUninitialize();
         }
 
-        virtual void TestInitialize() override
+        void TestInitialize() override
         {
             HRESULT hr = S_OK;
 
@@ -62,7 +62,7 @@ namespace Bootstrapper
             PlatformInitialize();
         }
 
-        virtual void TestUninitialize() override
+        void TestUninitialize() override
         {
             LogUninitialize(FALSE);
         }
