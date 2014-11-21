@@ -3784,6 +3784,15 @@
                 The transform did not contain any valid product changes and will not be included in the patch.
             </Instance>
         </Message>
+        <Message Id="IllegalVersionValue" Number="1148">
+            <Instance>
+                The {0}/@{1} attribute's value, '{2}', is not a valid version. It has been interpreted as '{3}'.
+                <Parameter Type="System.String" Name="elementName" />
+                <Parameter Type="System.String" Name="attributeName" />
+                <Parameter Type="System.String" Name="value" />
+                <Parameter Type="System.String" Name="interpretedValue" />
+            </Instance>
+        </Message>
     </Class>
 
     <Class Name="WixVerboses" ContainerName="WixVerboseEventArgs" BaseContainerName="MessageEventArgs" Level="Information">

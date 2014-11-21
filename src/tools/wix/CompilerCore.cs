@@ -166,6 +166,9 @@ namespace Microsoft.Tools.WindowsInstallerXml
 
         private static readonly Regex PutGuidHere = new Regex(@"PUT\-GUID\-(?:\d+\-)?HERE", RegexOptions.Singleline);
 
+        //private static readonly Regex VersionPicker = new Regex(@"(?<major>\d+)\.(?<minor>\d+)\.(?<build>\d+)\.(?<revision>\d+)", RegexOptions.Singleline);
+        private static readonly Regex VersionPicker = new Regex(@"(\d+\.){1-3}(\d+)(?:.*)", RegexOptions.Singleline);
+
         // Built-in variables (from burn\engine\variable.cpp, "vrgBuiltInVariables", around line 113)
         private static readonly List<String> BuiltinBundleVariables = new List<string>(
             new string[] {
@@ -1509,9 +1512,25 @@ namespace Microsoft.Tools.WindowsInstallerXml
                     }
                     catch (FormatException) // illegal integer in version
                     {
-                        this.OnMessage(WixErrors.IllegalVersionValue(sourceLineNumbers, attribute.OwnerElement.Name, attribute.Name, value));
                     }
                     catch (ArgumentException)
+                    {
+                    }
+
+
+                    Match match = CompilerCore.VersionPicker.Match(value);
+                    if (match.Success)
+                    {
+                        Version version = new Version(
+                            match.Value);
+                            //Convert.ToInt32(match.Groups["major"].Value, CultureInfo.InvariantCulture),
+                            //Convert.ToInt32(match.Groups["minor"].Value, CultureInfo.InvariantCulture),
+                            //Convert.ToInt32(match.Groups["build"].Value, CultureInfo.InvariantCulture),
+                            //Convert.ToInt32(match.Groups["patch"].Value, CultureInfo.InvariantCulture));
+                        this.OnMessage(WixWarnings.IllegalVersionValue(sourceLineNumbers, attribute.OwnerElement.Name, attribute.Name, value, version.ToString()));
+                        return version.ToString();
+                    }
+                    else
                     {
                         this.OnMessage(WixErrors.IllegalVersionValue(sourceLineNumbers, attribute.OwnerElement.Name, attribute.Name, value));
                     }
