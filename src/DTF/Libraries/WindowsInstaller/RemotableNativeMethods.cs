@@ -242,10 +242,10 @@ namespace Microsoft.Deployment.WindowsInstaller
 
         private static void FreeString(IntPtr buf, int field)
         {
-            IntPtr? stringPtr = Marshal.ReadIntPtr(buf, (field * requestFieldSize) + requestFieldDataOffset);
-            if (stringPtr.HasValue)
+            IntPtr stringPtr = Marshal.ReadIntPtr(buf, (field * requestFieldSize) + requestFieldDataOffset);
+            if (stringPtr != IntPtr.Zero)
             {
-                Marshal.FreeHGlobal(stringPtr.Value);
+                Marshal.FreeHGlobal(stringPtr);
             }
         }
 

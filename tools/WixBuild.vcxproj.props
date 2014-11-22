@@ -26,7 +26,7 @@
     <ProjectSubSystem Condition=" '$(ProjectSubSystem)'=='' ">Windows</ProjectSubSystem>
     <!-- VS2015: turn off 'typedef ignored when no variable declared' -->
     <!-- VS2015: turn off 'declaration hides class member' -->
-    <DisableSpecificCompilerWarnings Condition=" '$(PlatformToolset)'=='v140_xp' ">$(DisableSpecificCompilerWarnings);4091;4458</DisableSpecificCompilerWarnings>
+    <DisableSpecificCompilerWarnings Condition=" '$(PlatformToolset)'=='v140_xp' or '$(PlatformToolset)'=='v140' ">$(DisableSpecificCompilerWarnings);4091;4458</DisableSpecificCompilerWarnings>
   </PropertyGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -71,7 +71,7 @@
       <DisableSpecificWarnings>$(DisableSpecificCompilerWarnings)</DisableSpecificWarnings>
       <WarningLevel>Level4</WarningLevel>
       <AdditionalIncludeDirectories>$(WixVersionPath);$(ProjectDir)inc;$(MSBuildProjectDirectory);$(IntDir);$(SqlCESdkIncludePath);$(ProjectAdditionalIncludeDirectories);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_WIN32_MSI=500;_WIN32_WINNT=0x0501;$(ArmPreprocessorDefinitions);$(UnicodePreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_WIN32_MSI=500;_WIN32_WINNT=0x0501;$(ArmPreprocessorDefinitions);$(UnicodePreprocessorDefinitions);_CRT_STDIO_LEGACY_WIDE_SPECIFIERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>precomp.h</PrecompiledHeaderFile>
       <CallingConvention>StdCall</CallingConvention>
@@ -94,7 +94,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>$(ProjectAdditionalLinkLibraries);advapi32.lib;comdlg32.lib;user32.lib;oleaut32.lib;gdi32.lib;shell32.lib;ole32.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutputPath);$(AdditionalMultiTargetLibraryPath);$(ProjectAdditionalLinkLibraryDirectories);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions Condition=" '$(PlatformToolset)'=='v140_xp' ">/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition=" '$(PlatformToolset)'=='v140_xp' or '$(PlatformToolset)'=='v140' ">/IGNORE:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
 
