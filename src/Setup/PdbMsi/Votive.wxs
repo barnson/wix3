@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  <copyright file="2010.wxs" company="Outercurve Foundation">
+    Copyright (c) 2004, Outercurve Foundation.
+    This software is released under Microsoft Reciprocal License (MS-RL).
+    The license and further copyright text can be found in the file
+    LICENSE.TXT at the root directory of the distribution.
+  </copyright>
+-->
+
+<?include WixVer.wxi ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <ComponentGroup Id="VotivePdbs" Directory="BinFolder">
+            <?if $(var.BuildVotive2010)=true ?>
+            <Component>
+                <File Source="votive2010.pdb" />
+            </Component>
+            <?endif?>
+        </ComponentGroup>
+    </Fragment>
+</Wix>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  <copyright file="Toolset.wxs" company="Outercurve Foundation">
+    Copyright (c) 2004, Outercurve Foundation.
+    This software is released under Microsoft Reciprocal License (MS-RL).
+    The license and further copyright text can be found in the file
+    LICENSE.TXT at the root directory of the distribution.
+  </copyright>
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <ComponentGroup Id="ToolsetPdbs" Directory="BinFolder">
+            <Component>
+                <File Source="candle.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="dark.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="heat.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="insignia.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="light.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="lit.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="melt.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="pyro.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="shine.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="smoke.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="torch.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="wconsole.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="winterop.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="wix.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixCop.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixTasks.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="Microsoft.Deployment.Compression.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="Microsoft.Deployment.Compression.Cab.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="Microsoft.Deployment.Resources.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="Microsoft.Deployment.WindowsInstaller.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="Microsoft.Deployment.WindowsInstaller.Package.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="ThmViewer.pdb" />
+            </Component>
+
+            <ComponentGroupRef Id="BurnPdbs" />
+        </ComponentGroup>
+    </Fragment>
+
+    <Fragment>
+        <ComponentGroup Id="BurnPdbs">
+            <Component Directory="BurnX86Folder">
+                <File Source="burn.pdb" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>

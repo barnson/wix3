@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  <copyright file="Extensions.wxs" company="Outercurve Foundation">
+    Copyright (c) 2004, Outercurve Foundation.
+    This software is released under Microsoft Reciprocal License (MS-RL).
+    The license and further copyright text can be found in the file
+    LICENSE.TXT at the root directory of the distribution.
+  </copyright>
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <ComponentGroup Id="ExtensionPdbs" Directory="BinFolder">
+            <Component>
+                <File Source="WixBalExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixComPlusExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixDependencyExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixDifxAppExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixDirectXExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixFirewallExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixGamingExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixHttpExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixIIsExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixMsmqExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixNetFxExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixPSExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixSqlExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixTagExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixUIExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixUtilExtension.pdb" />
+            </Component>
+
+            <Component>
+                <File Source="WixVSExtension.pdb" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>
