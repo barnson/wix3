@@ -2620,7 +2620,7 @@ private: // privates
         }
 
         hr = ShelExec(sczLicensePath ? sczLicensePath : sczLicenseUrl, NULL, L"open", NULL, SW_SHOWDEFAULT, m_hWnd, NULL);
-        BalExitOnFailure(hr, "Failed to launch URL to EULA.");
+        BalExitOnFailure1(hr, "Failed to launch URL to EULA: %ls", sczLicensePath ? sczLicensePath : sczLicenseUrl);
 
     LExit:
         ReleaseStr(sczLicensePath);

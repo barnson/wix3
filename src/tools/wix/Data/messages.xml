@@ -3649,7 +3649,7 @@
         </Message>
         <Message Id="UxPayloadsOnlySupportEmbedding" Number="1127">
             <Instance>
-                A UX Payload ('{0}') was marked for something other than embedded packaging, possibly because it included a @DownloadUrl attribute. At present, UX Payloads must be embedded in the Bundle, so the requested packaging is being ignored.
+                A bootstrapper application payload ('{0}') was not marked to be compressed into the bundle, possibly because it includes a @DownloadUrl attribute. Bootstrapper application payloads must be compressed in the bundle, so the requested packaging is being ignored.
                 <Parameter Type="System.String" Name="sourceFile" />
             </Instance>
         </Message>

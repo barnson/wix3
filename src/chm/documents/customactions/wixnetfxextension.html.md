@@ -28,7 +28,7 @@ The WixNetfxExtension includes package groups that make it easier to include .NE
     </td>
 
     <td>
-      <p>.Net Framework 4.0 Full web setup.</p>
+      <p>.NET Framework 4.0 Full web setup.</p>
     </td>
   </tr>
 
@@ -38,7 +38,7 @@ The WixNetfxExtension includes package groups that make it easier to include .NE
     </td>
 
     <td>
-      <p>.Net Framework 4.0 Full standalone setup.</p>
+      <p>.NET Framework 4.0 Full standalone setup.</p>
     </td>
   </tr>
 
@@ -48,7 +48,7 @@ The WixNetfxExtension includes package groups that make it easier to include .NE
     </td>
 
     <td>
-      <p>.Net Framework 4.0 Client Profile web setup.</p>
+      <p>.NET Framework 4.0 Client Profile web setup.</p>
     </td>
   </tr>
 
@@ -58,7 +58,7 @@ The WixNetfxExtension includes package groups that make it easier to include .NE
     </td>
 
     <td>
-      <p>.Net Framework 4.0 Client Profile standalone setup.</p>
+      <p>.NET Framework 4.0 Client Profile standalone setup.</p>
     </td>
   </tr>
 
@@ -68,7 +68,7 @@ The WixNetfxExtension includes package groups that make it easier to include .NE
     </td>
 
     <td>
-      <p>.Net Framework 4.5 web setup.</p>
+      <p>.NET Framework 4.5 web setup.</p>
     </td>
   </tr>
 
@@ -78,7 +78,7 @@ The WixNetfxExtension includes package groups that make it easier to include .NE
     </td>
 
     <td>
-      <p>.Net Framework 4.5 standalone setup.</p>
+      <p>.NET Framework 4.5 standalone setup.</p>
     </td>
   </tr>
 
@@ -88,7 +88,7 @@ The WixNetfxExtension includes package groups that make it easier to include .NE
     </td>
 
     <td>
-      <p>.Net Framework 4.5.1 web setup.</p>
+      <p>.NET Framework 4.5.1 web setup.</p>
     </td>
   </tr>
 
@@ -98,7 +98,39 @@ The WixNetfxExtension includes package groups that make it easier to include .NE
     </td>
 
     <td>
-      <p>.Net Framework 4.5.1 standalone setup.</p>
+      <p>.NET Framework 4.5.1 standalone setup.</p>
+    </td>
+  </tr>
+
+  <tr>
+    <td valign="top">
+      <p>NetFx452Web</p>
+    </td>
+
+    <td>
+      <p>
+        .NET Framework 4.5.2 web setup.
+        To use as a prerequisite for a managed bootstrapper application, you must add
+        <pre>&lt;PayloadGroupRef Id=&quot;NetFx452License&quot; /&gt;</pre> to the 
+        <pre>BootstrapperApplication</pre> or <pre>BootstrapperApplicationRef</pre> in 
+        your bundle authoring.
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td valign="top">
+      <p>NetFx452Redist</p>
+    </td>
+
+    <td>
+      <p>
+        .NET Framework 4.5.2 standalone setup.
+        To use as a prerequisite for a managed bootstrapper application, you must add
+        <pre>&lt;PayloadGroupRef Id=&quot;NetFx452License&quot; /&gt;</pre> to the 
+        <pre>BootstrapperApplication</pre> or <pre>BootstrapperApplicationRef</pre> in 
+        your bundle authoring.
+      </p>
     </td>
   </tr>
 </table>
