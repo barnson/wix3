@@ -17044,7 +17044,7 @@ namespace Microsoft.Tools.WindowsInstallerXml
                             majorVersion = this.core.GetAttributeIntegerValue(sourceLineNumbers, attrib, 0, ushort.MaxValue);
                             break;
                         case "MinorVersion":
-                            minorVersion = this.core.GetAttributeIntegerValue(sourceLineNumbers, attrib, 0, byte.MaxValue);
+                            minorVersion = this.core.GetAttributeIntegerValue(sourceLineNumbers, attrib, 0, ushort.MaxValue);
                             break;
                         case "ResourceId":
                             resourceId = this.core.GetAttributeLongValue(sourceLineNumbers, attrib, int.MinValue, int.MaxValue);

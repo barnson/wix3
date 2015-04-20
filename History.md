@@ -1,3 +1,5 @@
+* BobArnson: WIXBUG:4726 - Correct maximum value for TypeLib/@MinorVersion.
+
 * SeanHall: WIXFEAT:4619 - Include WixUI dialogs and wxl files in core MSI.
 
 * SeanHall: WIXFEAT:4618 - Include WixStdBA and mbapreq themes and wxl files in core MSI.
