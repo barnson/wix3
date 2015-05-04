@@ -1,3 +1,5 @@
+* BobArnson: WIXBUG:4716 - If a .wxl file is missing strings added in v3.10, duplicate the generic string from v3.9. Add support for doing so to locutil.
+
 * BobArnson: WIXBUG:4734 - Rewrote type-51 CAs using SetProperty.
 
 * BobArnson: WIXFEAT:4720 - Added bind-time variables for .NET Framework package groups detect condition, install condition, and package directories.
