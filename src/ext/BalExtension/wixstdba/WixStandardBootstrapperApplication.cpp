@@ -1213,10 +1213,10 @@ private: // privates
         // For v3.9->v3.10 transition, duplicate new-to-v3.10 strings.
         // Do not merge to WiX v4.0.
         LOC_STRING* pLocString = NULL;
-        hr = LocGetString(m_pWixLoc, L"SuccessInstallHeader", &pLocString);
+        hr = LocGetString(m_pWixLoc, L"#(loc.SuccessInstallHeader)", &pLocString);
         if (E_NOTFOUND == hr)
         {
-            hr = LocGetString(m_pWixLoc, L"SuccessHeader", &pLocString);
+            hr = LocGetString(m_pWixLoc, L"#(loc.SuccessHeader)", &pLocString);
             ExitOnFailure(hr, "Failed to load SuccessHeader localization string.");
 
             hr = LocAddString(m_pWixLoc, L"SuccessInstallHeader", pLocString->wzText, pLocString->bOverridable);
@@ -1228,7 +1228,7 @@ private: // privates
             hr = LocAddString(m_pWixLoc, L"SuccessUninstallHeader", pLocString->wzText, pLocString->bOverridable);
             ExitOnFailure(hr, "Failed to duplicate localization string for SuccessUninstallHeader.");
 
-            hr = LocGetString(m_pWixLoc, L"FailureHeader", &pLocString);
+            hr = LocGetString(m_pWixLoc, L"#(loc.FailureHeader)", &pLocString);
             ExitOnFailure(hr, "Failed to load FailureHeader localization string.");
 
             hr = LocAddString(m_pWixLoc, L"FailureInstallHeader", pLocString->wzText, pLocString->bOverridable);
