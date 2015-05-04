@@ -1,3 +1,5 @@
+* BobArnson: WIXBUG:4716 - If a .wxl file is missing strings added in v3.10, duplicate the generic string from v3.9. Add support for doing so to locutil.
+
 * RobMen: WIXBUG:4732 - fix documentation links to MsiServiceConfig and MsiServiceConfigFailureActions.
 
 * BobArnson: WIXFEAT:4719 - Implement ExePackage/CommandLine:
