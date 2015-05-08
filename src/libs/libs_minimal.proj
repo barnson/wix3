@@ -12,16 +12,10 @@
     <ProjectReference Include="dutil\dutil.vcxproj">
       <Properties>PlatformToolset=v100</Properties>
     </ProjectReference>
-    <ProjectReference Include="deputil\deputil.vcxproj">
-      <Properties>PlatformToolset=v100</Properties>
-    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup Condition=" $(VS2012Available) and !$(VS2013Available) and !$(VS2015Available) ">
     <ProjectReference Include="dutil\dutil.vcxproj">
-      <Properties>PlatformToolset=v110_xp</Properties>
-    </ProjectReference>
-    <ProjectReference Include="deputil\deputil.vcxproj">
       <Properties>PlatformToolset=v110_xp</Properties>
     </ProjectReference>
   </ItemGroup>
@@ -30,16 +24,10 @@
     <ProjectReference Include="dutil\dutil.vcxproj">
       <Properties>PlatformToolset=v120_xp</Properties>
     </ProjectReference>
-    <ProjectReference Include="deputil\deputil.vcxproj">
-      <Properties>PlatformToolset=v120_xp</Properties>
-    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup Condition=" $(VS2013Available) and $(StaticAnalysisEnabled) and !$(VS2015Available) ">
     <ProjectReference Include="dutil\dutil.vcxproj">
-      <Properties>PlatformToolset=v120</Properties>
-    </ProjectReference>
-    <ProjectReference Include="deputil\deputil.vcxproj">
       <Properties>PlatformToolset=v120</Properties>
     </ProjectReference>
   </ItemGroup>
@@ -48,16 +36,10 @@
     <ProjectReference Include="dutil\dutil.vcxproj">
       <Properties>PlatformToolset=v140_xp</Properties>
     </ProjectReference>
-    <ProjectReference Include="deputil\deputil.vcxproj">
-      <Properties>PlatformToolset=v140_xp</Properties>
-    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup Condition=" $(VS2015Available) and $(StaticAnalysisEnabled) ">
     <ProjectReference Include="dutil\dutil.vcxproj">
-      <Properties>PlatformToolset=v140</Properties>
-    </ProjectReference>
-    <ProjectReference Include="deputil\deputil.vcxproj">
       <Properties>PlatformToolset=v140</Properties>
     </ProjectReference>
   </ItemGroup>
