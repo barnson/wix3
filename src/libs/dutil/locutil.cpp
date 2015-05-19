@@ -299,7 +299,7 @@ extern "C" HRESULT DAPI LocAddString(
     pWixLoc->rgLocStrings = static_cast<LOC_STRING*>(MemReAlloc(pWixLoc->rgLocStrings, sizeof(LOC_STRING) * pWixLoc->cLocStrings, TRUE));
     ExitOnNull(pWixLoc->rgLocStrings, hr, E_OUTOFMEMORY, "Failed to reallocate memory for localization strings.");
 
-    LOC_STRING* pLocString = pLocString = pWixLoc->rgLocStrings + (pWixLoc->cLocStrings - 1);
+    LOC_STRING* pLocString = pWixLoc->rgLocStrings + (pWixLoc->cLocStrings - 1);
 
     hr = StrAllocFormatted(&pLocString->wzId, L"#(loc.%s)", wzId);
     ExitOnFailure(hr, "Failed to set localization string Id.");
