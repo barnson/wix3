@@ -129,7 +129,7 @@ int InvokeOutOfProcManagedCustomAction(MSIHANDLE hSession, const wchar_t* szEntr
                 0, NULL, NULL, &si, &pi))
         {
                 DWORD err = GetLastError();
-                Log(hSession, L"Failed to create new CA process via RUNDLL32. Error code: %d", err);
+                Log(hSession, L"Failed to create new CA process: '%s %s'. Error code: %d", szRunDll32Path, szCommandLine, err);
                 return ERROR_INSTALL_FAILURE;
         }
 
