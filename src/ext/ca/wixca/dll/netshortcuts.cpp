@@ -48,7 +48,8 @@ extern "C" UINT __stdcall WixSchedInternetShortcuts(
     IUniformResourceLocatorW* piURL = NULL;
     IShellLinkW* piShellLink = NULL; 
     BOOL fInitializedCom = FALSE;
-    
+
+::MessageBoxA(NULL, "WixSchedInternetShortcuts", "breakbreakbreak", MB_OK);
     hr = WcaInitialize(hInstall, "WixSchedInternetShortcuts");
     ExitOnFailure(hr, "failed to initialize WixSchedInternetShortcuts.");
 
