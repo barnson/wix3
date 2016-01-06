@@ -13,7 +13,6 @@
 
 #include "precomp.h"
 
-
 int WINAPI wWinMain(
     __in HINSTANCE hInstance,
     __in_opt HINSTANCE /* hPrevInstance */,
@@ -21,10 +20,11 @@ int WINAPI wWinMain(
     __in int nCmdShow
     )
 {
-    ::HeapSetInformation(NULL, HeapEnableTerminationOnCorruption, NULL, 0);
-
     HRESULT hr = S_OK;
     DWORD dwExitCode = 0;
+
+    hr = Dutil_AppInitialize();
+    ExitOnFailure(hr, "Failed to initialize application.");
 
     // call run
     hr = EngineRun(hInstance, lpCmdLine, nCmdShow, &dwExitCode);

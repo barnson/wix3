@@ -412,6 +412,41 @@ extern "C" void DAPI Dutil_RootFailure(
 }
 
 /*******************************************************************
+Dutil_AppInitialize
+
+*******************************************************************/
+extern "C" HRESULT DAPI Dutil_AppInitialize()
+{
+    const DWORD PRIVATE_LOAD_LIBRARY_SEARCH_SYSTEM32 = 0x00000800;
+    typedef BOOL(WINAPI *LPFN_SETDEFAULTDLLDIRECTORIES)(DWORD);
+    typedef BOOL(WINAPI *LPFN_SETDLLDIRECTORYW)(LPCWSTR);
+
+    HRESULT hr = S_OK;
+
+    ::HeapSetInformation(NULL, HeapEnableTerminationOnCorruption, NULL, 0);
+
+    LPFN_SETDEFAULTDLLDIRECTORIES pfnSetDefaultDllDirectories = (LPFN_SETDEFAULTDLLDIRECTORIES)::GetProcAddress(::GetModuleHandleW(L"kernel32"), "SetDefaultDllDirectories");
+    if (pfnSetDefaultDllDirectories)
+    {
+        if (!pfnSetDefaultDllDirectories(PRIVATE_LOAD_LIBRARY_SEARCH_SYSTEM32))
+        {
+            ExitWithLastError(hr, "Failed to call SetDefaultDllDirectories.");
+        }
+    }
+    else
+    {
+        LPFN_SETDLLDIRECTORYW pfnSetDllDirectory = (LPFN_SETDLLDIRECTORYW)::GetProcAddress(::GetModuleHandleW(L"kernel32"), "SetDllDirectory");
+        if (pfnSetDllDirectory && !pfnSetDllDirectory(L""))
+        {
+            ExitWithLastError(hr, "Failed to call SetDllDirectory.");
+        }
+    }
+
+LExit:
+    return hr;
+}
+
+/*******************************************************************
  LoadSystemLibrary - Fully qualifies the path to a module in the
                      Windows system directory and loads it.
 

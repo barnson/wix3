@@ -47,7 +47,7 @@ REPORT_LEVEL DAPI Dutil_TraceGetLevel();
 void __cdecl Dutil_Trace(__in_z LPCSTR szFile, __in int iLine, __in REPORT_LEVEL rl, __in_z __format_string LPCSTR szMessage, ...);
 void __cdecl Dutil_TraceError(__in_z LPCSTR szFile, __in int iLine, __in REPORT_LEVEL rl, __in HRESULT hr, __in_z __format_string LPCSTR szMessage, ...);
 void DAPI Dutil_RootFailure(__in_z LPCSTR szFile, __in int iLine, __in HRESULT hrError);
-
+HRESULT DAPI Dutil_AppInitialize();
 #ifdef __cplusplus
 }
 #endif

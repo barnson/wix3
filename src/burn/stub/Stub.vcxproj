@@ -46,6 +46,7 @@
     <Link>
       <SwapRunFromCD>true</SwapRunFromCD>
       <SwapRunFromNET>true</SwapRunFromNET>
+      <DelayLoadDLLs>cabinet.dll;crypt32.dll;msi.dll;rpcrt4.dll;shlwapi.dll;wininet.dll;wintrust.dll;version.dll</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
 
