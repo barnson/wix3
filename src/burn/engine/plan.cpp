@@ -1099,7 +1099,8 @@ extern "C" HRESULT PlanExecutePackage(
 
     // Add the cache and install size to estimated size if it will be on the machine at the end of the install
     if (BOOTSTRAPPER_REQUEST_STATE_PRESENT == pPackage->requested || 
-        (BOOTSTRAPPER_PACKAGE_STATE_PRESENT == pPackage->currentState && BOOTSTRAPPER_REQUEST_STATE_ABSENT < pPackage->requested) || 
+        (BOOTSTRAPPER_PACKAGE_STATE_PRESENT == pPackage->currentState && BOOTSTRAPPER_REQUEST_STATE_ABSENT < pPackage->requested) ||
+        (BOOTSTRAPPER_PACKAGE_STATE_PRESENT == pPackage->currentState && BURN_CACHE_TYPE_FOR_REPAIR == pPackage->cacheType) ||
         BURN_CACHE_TYPE_ALWAYS == pPackage->cacheType
        )
     {
@@ -2854,7 +2855,12 @@ static BOOL NeedsCache(
     if (BURN_CACHE_TYPE_ALWAYS == pPackage->cacheType && BOOTSTRAPPER_ACTION_INSTALL <= pPlan->action)
     {
         return TRUE;
-    }    
+    }
+    // All packages that have cacheType set to forRepair should be cached if the bundle is going to be present and the package is already present.
+    else if (BURN_CACHE_TYPE_FOR_REPAIR == pPackage->cacheType && BOOTSTRAPPER_ACTION_INSTALL <= pPlan->action && BOOTSTRAPPER_PACKAGE_STATE_PRESENT == pPackage->currentState)
+    {
+        return TRUE;
+    }
     else if (BURN_PACKAGE_TYPE_EXE == pPackage->type) // Exe packages require the package for all operations (even uninstall).
     {
         return BOOTSTRAPPER_ACTION_STATE_NONE != pPackage->execute;
